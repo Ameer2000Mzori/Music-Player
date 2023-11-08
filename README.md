@@ -43,8 +43,10 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[multi-page responsive website]**
-- **[flex & grid]**
+- **[Responsive Website]**
+- **[Flex & Grid]**
+- **[Custom project]**
+- **[Dom manipulation]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
