@@ -7,38 +7,33 @@ const controlsBtn = document.getElementsByClassName("controls-btn")[0];
 const musicTitle = document.getElementsByClassName("music-title")[0];
 const musicArtist = document.getElementsByClassName("music-artist")[0];
 const audioHidden = document.getElementsByClassName("audio-hidden")[0];
-
-// getting music
-// const musicOne = "../music/jacinto-1.mp3";
-// const musicTwo = "../music/jacinto-2.mp3";
-// const musicThree = "../music/jacinto-3.mp3";
-// const musicFour = "../music/metric-1.mp3";
-
-// audioHidden.src = musicOne;
-
+const musicImg = document.getElementsByClassName("music-img")[0];
+const starttime = document.getElementsByClassName("start-time")[0];
+const endTime = document.getElementsByClassName("end-time")[0];
+const dorationTimer = document.getElementsByClassName("doration-timer")[0];
+const dorationWrap = document.getElementsByClassName("doration-wrap")[0];
 const song = [
   {
     name: "jacinto-1",
-    artist: "Ameer Ameen",
-    displayname: "seven nation army (remix)",
+    displayName: "Electric Chill Machine",
+    artist: "Jacinto Design",
   },
   {
     name: "jacinto-2",
-    artist: "Mzori",
-    displayname: "seven nation army (remix)",
+    displayName: "Seven Nation Army (Remix)",
+    artist: "Jacinto Design",
   },
   {
     name: "jacinto-3",
-    artist: "Ameer",
-    displayname: "seven nation army (remix)",
+    displayName: "Goodnight, Disco Queen",
+    artist: "Jacinto Design",
   },
   {
     name: "metric-1",
-    artist: "Ameen",
-    displayname: "seven nation army (remix)",
+    displayName: "Front Row (Remix)",
+    artist: "Metric/Jacinto Design",
   },
 ];
-
 playBtn.addEventListener("click", () => {
   if (audioHidden.paused) {
     musicPlay();
@@ -90,38 +85,84 @@ function unMuteMusic() {
 function loadSong(song) {
   musicArtist.textContent = song.artist;
   audioHidden.src = `../music/${song.name}.mp3`;
-  musicTitle.textContent = song.displayname;
+  musicTitle.textContent = song.displayName;
+  musicImg.src = `../imgs/${song.name}.jpg`;
 }
+//  if the song ends then play next song
 
 // our before and next functions
 let songInedx = 0;
+
 function nextMusic() {
   songInedx++;
-  if (songInedx == 4) {
+  if (songInedx == song.length) {
     songInedx = 0;
   }
   console.log(songInedx);
   loadSong(song[songInedx]);
+  musicPlay();
 }
 
 function beforeMusic() {
   if (songInedx == 0) {
-    songInedx = 4;
+    songInedx = song.length;
   }
   songInedx--;
   console.log(songInedx);
   loadSong(song[songInedx]);
+  musicPlay();
 }
 
 // our click for before and next functions
 nextBtn.addEventListener("click", () => {
   nextMusic();
-  musicPlay();
 });
 
 beforeBtn.addEventListener("click", () => {
   beforeMusic();
-  musicPlay();
 });
 
 loadSong(song[2]);
+
+//event progressbar
+audioHidden.addEventListener("timeupdate", updateprogressBar);
+
+function updateprogressBar(e) {
+  if (audioHidden) {
+    const { duration, currentTime } = e.srcElement;
+
+    // Update progress bar width
+    const progressPercent = (currentTime / duration) * 100;
+    dorationTimer.style.width = `${progressPercent}%`;
+
+    // Calculate display for duration
+    const durationMinutes = Math.floor(duration / 60);
+    let durationSeconds = Math.floor(duration % 60);
+    if (durationSeconds < 10) {
+      durationSeconds = `0${durationSeconds}`;
+    }
+
+    // Delay switching duration Element to avoid NaN
+    if (durationSeconds) {
+      endTime.textContent = `${durationMinutes}:${durationSeconds}`;
+    }
+
+    // calculate for duration :
+    const currentMinutes = Math.floor(currentTime / 60);
+    let currentSeconds = Math.floor(currentTime % 60);
+    if (currentSeconds < 10) {
+      currentSeconds = `0${currentSeconds}`;
+    }
+    starttime.textContent = `${currentMinutes}:${currentSeconds}`;
+  }
+}
+
+// Set Progress Bar
+function setProgressBar(e) {
+  const width = this.clientWidth;
+  const clickX = e.offsetX;
+  const { duration } = audioHidden;
+  audioHidden.currentTime = (clickX / width) * duration;
+}
+audioHidden.addEventListener("ended", nextMusic);
+dorationWrap.addEventListener("click", setProgressBar);

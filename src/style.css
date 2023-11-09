@@ -76,16 +76,20 @@ body {
   margin-bottom: 15px;
 }
 
-.doration {
+.doration-wrap {
   height: 5px;
   width: 100%;
   background-color: gainsboro;
   border-radius: 15px;
 }
 
+.doration-wrap:hover {
+  cursor: pointer;
+}
+
 .doration-timer {
   height: 5px;
-  width: 50%;
+  width: 0%;
   border-radius: 15px;
   background-color: rgb(0, 0, 0);
 }
