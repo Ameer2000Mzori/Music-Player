@@ -5,3 +5,148 @@ body {
   padding: 0;
   margin: 0;
 }
+
+.header {
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgb(207, 207, 206);
+}
+
+.music-wrapper {
+  border-radius: 25px;
+  padding: 5px;
+  background-color: aliceblue;
+  height: 400px;
+  width: 250px;
+  filter: drop-shadow(0 0 0.75rem rgb(95, 93, 94));
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(236, 236, 236);
+}
+
+.music-img {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  border-radius: 25px;
+  filter: drop-shadow(0 0 0.75rem rgb(95, 93, 94));
+  border-style: solid;
+  border-width: 1px;
+  border-color: antiquewhite;
+}
+
+.info-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.music-title {
+  padding: 0;
+  margin: 0;
+}
+
+.music-artist {
+  padding: 0;
+  margin: 0;
+}
+
+.timer-wraper {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  padding: 5px;
+  font-size: 13px;
+}
+
+.doration-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.doration {
+  height: 5px;
+  width: 100%;
+  background-color: gainsboro;
+  border-radius: 15px;
+}
+
+.doration-timer {
+  height: 5px;
+  width: 50%;
+  border-radius: 15px;
+  background-color: rgb(0, 0, 0);
+}
+
+i {
+  margin: 10px;
+  font-size: 35px;
+}
+
+i:hover {
+  cursor: pointer;
+  font-size: 36px;
+}
+
+i:active {
+  font-size: 33px;
+}
+
+/* flip card */
+
+.flip-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  background-color: transparent;
+  height: 200px;
+  padding: 0;
+  margin: 0;
+  border-radius: 15px;
+}
+
+.flip-card-inner {
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 0;
+  margin: 0;
+  border-radius: 15px;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  padding: 0;
+  margin: 0;
+  height: 200px;
+  width: 200px;
+  border-radius: 15px;
+}
+
+.flip-card-front {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+  padding: 0;
+  margin: 0;
+  background-color: #bbb;
+  color: black;
+}
