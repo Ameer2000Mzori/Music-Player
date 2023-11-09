@@ -18,7 +18,7 @@
 
 # 📖 About This Project <a name="about-project"></a>
 
-> Music Player is a project made with HTML, CSS, and JavaScript, using linters to avoid any coding problems and to maintain clean code. This project allows you to change music or pause. Take a look at the live demo.
+> Custom  Music Player is a project made with HTML, CSS, and JavaScript, using linters to avoid any coding problems and to maintain clean code. This project allows you to change music or pause. Take a look at the live demo.
 
 # Sample Of Website <a name="Sample-Of-Website"></a>
 
